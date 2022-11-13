@@ -13,17 +13,18 @@ import java.util.stream.Collectors;
 
 public class MaxCategory {
 
-    protected List<Product> productList = new ArrayList<>();
+    public static List<Product> productList = new ArrayList<>();
     private Map<String, Integer> maxCategory = new HashMap<>();
 
-    public void addProduct (BufferedReader in) throws IOException {
+    public void addProduct(BufferedReader in) throws IOException {
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
         String inRead = in.readLine();
         Product product = gson.fromJson(inRead, Product.class);
         productList.add(product);// добавляем в массив корзины сообщения с клиента
     }
-    public Map loadFromTSV(File file) throws IOException {
+
+    public static Map loadFromTSV(File file) throws IOException {
         List<String[]> categories = new ArrayList<>();
         Map<String, Integer> postServer = new HashMap<>();
         categories = Files.lines(file.toPath())
@@ -62,7 +63,6 @@ public class MaxCategory {
         jsonMaxSum.put("sum", maxFinSum);
         return jsonMaxSum;
     }
-
 
 
 }

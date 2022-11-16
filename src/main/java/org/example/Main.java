@@ -14,7 +14,6 @@ public class Main {
             while (true) { // в цикле(!) принимаем подключения
                 try (
                         Socket socket = serverSocket.accept();
-                        Socket clientSocket = serverSocket.accept();
                         BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                         PrintWriter out = new PrintWriter(socket.getOutputStream());
                 ) {
